@@ -9,7 +9,7 @@ st.title("🚦 AutoTron Live Trade Dashboard")
 # Load signals
 @st.cache_data(ttl=120)
 def load_signals():
-    return pd.read_csv(SHEET_CSV_URL)
+    return pd.read_csv(https://docs.google.com/spreadsheets/d/110tuY8QOQTj4H_J0QB5gtovHGUlRSSg3A38dluB3eUI/edit?usp=sharing)
 
 signals = load_signals()
 st.dataframe(signals)
