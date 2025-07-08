@@ -1,17 +1,22 @@
 import streamlit as st
 import pandas as pd
 
-SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/110tuY8QOQTj4H_J0QB5gtovHGUlRSSg3A38dluB3eUI/edit?usp=sharing"
+# === Replace XXX and the GIDs with your real values ===
+SIGNALS_URL = "https://docs.google.com/spreadsheets/d/110tuY8QOQTj4H_J0QB5gtovHGUlRSSg3A38dluB3eUI/export?format=csv&gid=0"
+TRADES_URL  = "https://docs.google.com/spreadsheets/d/110tuY8QOQTj4H_J0QB5gtovHGUlRSSg3A38dluB3eUI/export?format=csv&gid=123456789"  # <- Put your trades tab GID here
 
 st.set_page_config(page_title="AutoTron Dashboard", layout="wide")
 st.title("🚦 AutoTron Live Trade Dashboard")
 
-# Load signals
-@st.cache_data(ttl=120)
-def load_signals():
-    return pd.read_csv(https://docs.google.com/spreadsheets/d/110tuY8QOQTj4H_J0QB5gtovHGUlRSSg3A38dluB3eUI/edit?usp=sharing)
+# --- Use tabs for pro vibes ---
+tab1, tab2 = st.tabs(["📊 Signals", "💼 Trades"])
 
-signals = load_signals()
-st.dataframe(signals)
+with tab1:
+    st.header("Signals")
+    signals = pd.read_csv(SIGNALS_URL)
+    st.dataframe(signals)
 
-# You can add more widgets: charts, stats, filters, etc.
+with tab2:
+    st.header("Trades")
+    trades = pd.read_csv(TRADES_URL)
+    st.dataframe(trades)
